@@ -9,8 +9,8 @@ export const themeLight = {
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    position: fixed;
-    width: 100%;
+    /* position: fixed;
+    width: 100%; */
     padding: 0;
     margin: 0;
     font-family: 'Rubik', 'HelveticaNeue', Helvetica, Arial, 'Lucida Grande', sans-serif;
