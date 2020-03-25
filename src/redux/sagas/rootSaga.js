@@ -1,4 +1,4 @@
-import {delay, put, takeLatest, takeEvery, call} from 'redux-saga/effects';
+import {delay, put, takeLatest, takeEvery, call,select} from 'redux-saga/effects';
 import * as bookTypes from 'redux/types/bookTypes';
 import {setLoading, stopLoading} from 'redux/actions/uiActions';
 import {getAllBookSuccess, getAllBookFailed, getMoreBookSuccess, getMoreBookFailed} from 'redux/actions/bookAction';
@@ -22,9 +22,9 @@ function* watchFetchListBook() {
 }
 
 function* watchFetchMoreListBook(action){
-    const {payload } = action;
     yield put(setLoading());
-    const rs = yield call(loadMoreListBook, payload);
+    const startIndex = yield select(state => state.books.maxResult);
+    const rs = yield call(loadMoreListBook, startIndex);
     switch (rs.status) {
         case 404:
             yield put(getMoreBookFailed(rs.err))

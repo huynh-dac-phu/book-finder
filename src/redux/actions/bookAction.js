@@ -20,10 +20,10 @@ export const getAllBookFailed = err => {
     }
 }
 
-export const getMoreBook = (payload) => {
+export const getMoreBook = (maxResult) => {
     return {
         type: bookTypes.GET_MORE_BOOK,
-        payload
+        payload: maxResult
     }
 }
 

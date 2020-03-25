@@ -1,29 +1,37 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Col, MasonryDiv } from 'components/Masonry/styled'
-import {useEventListener} from '../Hooks/useEventListener'
+import React from "react";
+import MasonryWrapper from "components/Masonry/MasonryWrapper";
+import { useSelector, useDispatch } from "react-redux";
+import { ColorBox,Image, ContentBox } from "components/Masonry/styled";
+import random from "lodash/random";
+import NoImage from 'assets/images/no-image.jpg';
 
-const fillCols = (children, cols) => {
-  children.forEach((child, i) => cols[i % cols.length].push(child))
-}
+export default function Masonry() {
+  const listBook = useSelector(state => state.books.listBook);
+  const dispatch = useDispatch();
 
-export default function Masonry({ children, gap, minWidth = 500, ...rest }) {
-  const ref = useRef()
-  const [numCols, setNumCols] = useState(4)
-  const cols = [...Array(numCols)].map(() => [])
-  fillCols(children, cols)
-
-  const resizeHandler = () =>
-    setNumCols(Math.ceil(ref.current.offsetWidth / minWidth))
-  useEffect(resizeHandler, [])
-  useEventListener(`resize`, resizeHandler)
+  const handleScroll = e => {
+    const element = e.target;
+    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+      dispatch({ type: "INCREMENT_MAX_RESULT" });
+      dispatch({ type: "GET_MORE_BOOK" });
+    }
+  };
 
   return (
-    <MasonryDiv itemWidth={330} ref={ref} gap={gap} {...rest}>
-      {[...Array(numCols)].map((_, index) => (
-        <Col key={index} gap={gap}>
-          {cols[index]}
-        </Col>
-      ))}
-    </MasonryDiv>
-  )
+    <MasonryWrapper minWidth={210}  onScroll={handleScroll}>
+      {listBook.map(book => {
+        const { title, authors, publishedDate, imageLinks } = book.volumeInfo;
+        return (
+          <ColorBox key={book.id} hue={random(0, 340)}>
+               <Image src={ imageLinks ? imageLinks.thumbnail : NoImage} alt="" />
+            <ContentBox>
+              <p>{title}</p>
+              <p> {authors && authors.join(" - ")}</p>
+              <p> {publishedDate}</p>
+            </ContentBox>
+          </ColorBox>
+        );
+      })}
+    </MasonryWrapper>
+  );
 }

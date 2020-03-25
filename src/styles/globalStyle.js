@@ -8,12 +8,13 @@ export const themeLight = {
 }
 
 export const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap&subset=latin-ext,vietnamese');
+  
   body {
-    /* position: fixed;
-    width: 100%; */
     padding: 0;
     margin: 0;
-    font-family: 'Rubik', 'HelveticaNeue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', 'Rubik', 'HelveticaNeue', Helvetica, Arial, 'Lucida Grande', sans-serif; */
   }
   
   input::-ms-clear,
