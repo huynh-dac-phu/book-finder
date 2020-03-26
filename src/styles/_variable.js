@@ -2,10 +2,10 @@ export const color = {
   primary: "#fff",
   second: "#a0a0a0",
   thirty: "#676767",
-  fourty: "#555555",
-  fifty: "#6ad36e",
+  fourty: "#e8e4e4",
+  fifty: "#aba8a8",
   sixth: "#38c6da",
-  seventh: "#fb5867",
+  seventh: "#6d6d6d",
   eight: "#000",
   ninth: "#b5b5b5",
   tenth: "#bcbfc4"

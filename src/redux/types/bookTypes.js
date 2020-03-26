@@ -9,3 +9,5 @@ export const GET_MORE_BOOK_FAILED = 'GET_MORE_BOOK_FAILED';
 
 export const MAKE_LIKE_BOOK = 'MAKE_LIKE_BOOK' 
 export const MAKE_UNLIKE_BOOK = 'MAKE_UNLIKE_BOOK' 
+
+export const DO_SEARCHING = "DO_SEARCHING"; 

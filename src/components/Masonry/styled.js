@@ -3,19 +3,22 @@ import styled from "styled-components";
 export const MasonryDiv = styled.div`
   position: fixed;
   left: 50%;
+  bottom: 0;
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: ${props =>
     `repeat(auto-fill, minmax(${props.itemWidth}px, 1fr))`};
   /* grid-gap: ${props => props.gap || `1em`}; */
-  padding: 0 15px;
+  padding-top: 30px;
   width: 90%;
   max-width: 1440px;
-  height: 100vh;
+  height: calc(100vh - 100px);
   overflow: auto;
 
   &::-webkit-scrollbar {
+    position: relative;
     width: 10px;
+    z-index: 1;
   }
 
   &::-webkit-scrollbar-track {
@@ -33,7 +36,7 @@ export const MasonryDiv = styled.div`
 export const Col = styled.div`
   display: grid;
   grid-gap: ${props => props.gap || `1em`};
-  padding: 0 .5em;
+  padding: 0 0.5em;
 `;
 
 export const ColorBox = styled.div`
@@ -50,14 +53,14 @@ export const ColorBox = styled.div`
   overflow: hidden;
   cursor: pointer;
   :hover {
-    box-shadow: 0 0 16px 0 ${props => props.theme.color.fourty};
+    box-shadow: 0 0 16px 0 ${props => props.theme.color.thirty};
   }
 `;
 
 export const Image = styled.img`
   width: 128px;
-`
+`;
 
 export const ContentBox = styled.div`
   padding: 10px;
-`
+`;

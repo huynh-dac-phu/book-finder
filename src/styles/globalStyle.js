@@ -1,11 +1,11 @@
-import { createGlobalStyle, css } from 'styled-components';
-import {color, fontSize, fontWeight, breakpoints} from 'styles/_variable.js';
+import { createGlobalStyle, css } from "styled-components";
+import { color, fontSize, fontWeight, breakpoints } from "styles/_variable.js";
 
 export const themeLight = {
-    color,
-    fontSize, 
-    fontWeight
-}
+  color,
+  fontSize,
+  fontWeight
+};
 
 export const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap&subset=latin-ext,vietnamese');
@@ -14,7 +14,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    /* font-family: 'Roboto', 'Rubik', 'HelveticaNeue', Helvetica, Arial, 'Lucida Grande', sans-serif; */
   }
   
   input::-ms-clear,
@@ -29,11 +28,14 @@ export const GlobalStyle = createGlobalStyle`
   input::-webkit-search-results-decoration { display: none; }/* clears the 'X' from Chrome */
 `;
 
-export const MediaQuery = Object.keys(breakpoints).reduce((accumulator, label) => {
+export const MediaQuery = Object.keys(breakpoints).reduce(
+  (accumulator, label) => {
     accumulator[label] = (...args) => css`
       @media (max-width: ${breakpoints[label]}) {
         ${css(...args)}
       }
     `;
     return accumulator;
-  }, {});
+  },
+  {}
+);
