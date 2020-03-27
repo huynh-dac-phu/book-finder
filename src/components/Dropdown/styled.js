@@ -1,11 +1,35 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const moving = keyframes`
+  from {left: 200%};
+  to {left: -260%};
+`;
 
 export const DropdownWrapper = styled.div`
   position: relative;
+  display: flex;
+  justify-content: flex-end;
   width: 130px;
   height: 100%;
 `;
 
+export const Wrapper = styled.div`
+  width: 100px;
+  position: relative;
+  overflow: hidden;
+`;
+export const Input = styled.input`
+  position: relative;
+  padding: 0;
+  width: 2770px;
+  height: 100%;
+  border: 0;
+  background-color: #fff;
+  font-size: ${props => props.theme.fontSize.small};
+  color: ${props => props.theme.color.fifty};
+  text-transform: capitalize;
+  animation: ${moving} 6s linear infinite;
+`;
 export const DropdownList = styled.ul`
   position: absolute;
   top: ${props => (props.isHide ? "-300px" : "75px")};
@@ -56,14 +80,11 @@ export const DropdownItem = styled.li`
 export const Icon = styled.button`
   position: relative;
   height: 100%;
-  padding: 20px;
-  background: #fff;
+  padding-left: 20px;
+  background: inherit;
   border: 0;
   outline: 0;
-
-  &:focus {
-    outline: 0;
-  }
+  cursor: pointer;
 
   &:before {
     content: "";
@@ -76,5 +97,25 @@ export const Icon = styled.button`
     border-right: solid 2px currentColor;
     -webkit-transform: rotate(135deg);
     transform: rotate(135deg);
+  }
+
+  /* &:after {
+    content: "by Library of Congress Control Number";
+    position: absolute;
+    top: 50%;
+    line-height: 5px;
+    width: max-content;
+    left: 0;
+    animation: ${moving} 10s linear infinite;
+  } */
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    &:before {
+      border-color: #888;
+    }
   }
 `;

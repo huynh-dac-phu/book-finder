@@ -1,8 +1,15 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import MasonryWrapper from "components/Masonry/MasonryWrapper";
 import PriceBox from "components/Masonry/PriceBox";
-import { useSelector, useDispatch } from "react-redux";
-import { ColorBox, Image, ContentBox } from "components/Masonry/styled";
+import {
+  ColorBox,
+  Image,
+  ContentBox,
+  TitleBox,
+  AuthorBox,
+  DateBox
+} from "components/Masonry/styled";
 import random from "lodash/random";
 import NoImage from "assets/images/no-image.jpg";
 import StarRatings from "react-star-ratings";
@@ -29,24 +36,28 @@ export default function Masonry() {
           imageLinks,
           averageRating
         } = book.volumeInfo;
-        const { saleability, retailPrice } = book.saleInfo;
+        const { saleability, listPrice, retailPrice } = book.saleInfo;
         return (
           <ColorBox key={book.id} hue={random(0, 340)}>
             <Image src={imageLinks ? imageLinks.thumbnail : NoImage} alt="" />
             <ContentBox>
-              <p>{title}</p>
-              <p> {authors && authors.join(" - ")}</p>
-              <p> {publishedDate}</p>
-              <PriceBox isSale={saleability} price={retailPrice} />
+              <TitleBox>{title}</TitleBox>
+              <AuthorBox> {authors && authors.join(" - ")}</AuthorBox>
               {averageRating && (
                 <StarRatings
                   rating={averageRating}
                   starRatedColor="white"
                   numberOfStars={5}
                   starDimension={"15px"}
-                  starSpacing={"2px"}
+                  starSpacing={"1px"}
                 />
               )}
+              <DateBox> {publishedDate}</DateBox>
+              <PriceBox
+                isSale={saleability}
+                oldPrice={listPrice}
+                price={retailPrice}
+              />
             </ContentBox>
           </ColorBox>
         );

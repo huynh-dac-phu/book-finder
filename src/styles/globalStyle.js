@@ -15,7 +15,9 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     font-family: 'Roboto', sans-serif;
   }
-  
+   p {
+     margin: 5px 0;
+   }
   input::-ms-clear,
   input::-ms-reveal {  /* clears the 'X' from Internet Explorer */
     display: none;

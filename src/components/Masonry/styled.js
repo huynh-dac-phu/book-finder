@@ -61,6 +61,31 @@ export const Image = styled.img`
   width: 128px;
 `;
 
+export const TopBox = styled.div`
+  display: flex;
+`;
+
 export const ContentBox = styled.div`
   padding: 10px;
+`;
+
+export const TitleBox = styled.div`
+  font-size: 16px;
+  margin-bottom: 12px;
+`;
+export const AuthorBox = styled.p`
+  font-size: 14px;
+  font-weight: 500;
+`;
+export const Price = styled.p`
+  font-size: 14px;
+  font-weight: 400;
+`;
+export const OldPrice = styled(Price)`
+  color: ${props => props.theme.color.sixth};
+  text-decoration: line-through;
+`;
+export const DateBox = styled.p`
+  font-size: 13px;
+  font-weight: 500;
 `;

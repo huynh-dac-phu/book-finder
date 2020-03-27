@@ -4,7 +4,7 @@ export const color = {
   thirty: "#676767",
   fourty: "#e8e4e4",
   fifty: "#aba8a8",
-  sixth: "#38c6da",
+  sixth: "#f1e9e9",
   seventh: "#6d6d6d",
   eight: "#000",
   ninth: "#b5b5b5",
